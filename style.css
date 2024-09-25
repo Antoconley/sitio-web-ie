@@ -13,16 +13,37 @@ html, body { /* Estilos para el html y el body */
 }
 
 main { /* Estilo para el elemento main */
+    position: relative; /* Necesario para el posicionamiento del pseudo-elemento */
     display: grid; /* Activa el grid layout */
-    grid-template-columns: 1fr 2fr; /* Define dos columnas con proporciones 1:2 */
-    grid-template-rows: auto auto; /* Define dos filas de altura automática */
-    margin-left: 50px; /* Márgen izquierdo de 50px */
-    margin-right: 50px; /* Márgen derecho de 50px */
-    column-gap: 20px; /* Espacio entre columnas de 20px */
+    grid-template-columns: 1fr; /* Cambia a una sola columna */
+    grid-template-rows: auto auto auto; /* Define tres filas de altura automática */
+    margin: 0 5cm; /* Márgenes a los costados de 5 cm */
     grid-template-areas: /* Define áreas específicas dentro del grid */
-        "title title" /* Título ocupa ambas columnas */
-        "contenido proyectos"; /* Contenido y proyectos ocupan cada una una columna */
+        "title" /* Título ocupa la primera fila */
+        "contenido" /* Contenido ocupa la segunda fila */
+        "proyectos"; /* Proyectos ocupa la tercera fila */
+    justify-items: center; /* Centra todo el contenido dentro del main */
 }
+
+body {
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+    background-color: #cbfcff; /* Fondo claro */
+    position: relative; /* Necesario para el posicionamiento del pseudo-elemento */
+}
+
+body::before { /* Pseudo-elemento para el efecto de difuminado */
+    content: ""; /* Necesario para que se muestre el pseudo-elemento */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Desde la parte superior */
+    left: 0; /* Desde la parte izquierda */
+    right: 0; /* Hasta la parte derecha */
+    bottom: 0; /* Hasta la parte inferior */
+    background: radial-gradient(circle, rgba(106, 27, 154, 0.6) 60%, rgba(203, 252, 255, 0) 100%); /* Efecto difuminado morado */
+    pointer-events: none; /* Permite la interacción con los elementos debajo */
+}
+
+
 
 #left { /* Estilo para el elemento con id left */
     padding: 30px; /* Padding de 30px en todos los lados */
@@ -39,13 +60,24 @@ main { /* Estilo para el elemento main */
 h1 { /* Estilo para el título h1 */
     font-size: 4em; /* Tamaño de fuente grande (4em) */
     font-weight: 900; /* Fuente en negrita */
-    color: #3b0063; /* Color naranja */
-    font-style: normal ;
+    color: #5a185c; /* Color  */
+    font-style: normal;
+    display: flex; /* Activa flexbox en el título */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+    padding: 20px 0; /* Padding en la parte superior e inferior para un espaciado adecuado */
+    background: url('ruta-a-tu-imagen.jpg') no-repeat center center; /* Fondo centrado */
+    background-size: cover; /* Asegura que el fondo cubra todo el área */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra con desplazamiento y difuminado */
+    backdrop-filter: blur(10px) brightness(90%); /* Efecto de fondo */
 }
+
+
 
 h2 { /* Estilo para subtítulos h2 */
     font-size: 1.5em; /* Tamaño de fuente mediano (1.5em) */
-    color: #4c0080;
+    color: #0d1216;
     font-weight: 700;
     font-style: normal;
 }
@@ -67,11 +99,10 @@ p { /* Estilo para párrafos p */
 
 .proyectos { /* Estilo para el contenedor con clase proyectos */
     display: grid; /* Activa el grid layout */
-    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
-    column-gap: 30px; /* Espacio entre columnas de 30px */
-    row-gap: 20px; /* Espacio entre filas de 20px */
-    height: 450px; /* Altura fija de 450px */
-    overflow-y: auto; /* Activa el scroll vertical si es necesario */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Aumenta un poco el tamaño de las imágenes */
+    column-gap: 20px; /* Espacio entre columnas de 10px */
+    row-gap: 10px; /* Espacio entre filas de 10px */
+    justify-items: center; /* Centra las imágenes dentro del grid */
 }
 
 .proyectos nav { /* Estilo para el elemento nav dentro de .proyectos */
@@ -142,15 +173,14 @@ p {
 
 img:hover {
     transform: scale(1.1); /* Aumenta el tamaño de la imagen al pasar el ratón */
-  }
+}
 
-
-  p {
+p {
     text-align:left; /* Alinea el texto */
     letter-spacing: 0.5px; /* Añade espaciado entre letras */
-  }
+}
 
-  h1 {
+h1 {
     backdrop-filter: blur(10px) brightness(90%);/* Fondo al titulo*/
-  } 
-  
+    align-items: center;
+}
